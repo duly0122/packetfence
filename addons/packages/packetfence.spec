@@ -668,6 +668,8 @@ fi
                         /usr/local/pf/conf/adminroles.conf.example
 %config(noreplace)      /usr/local/pf/conf/allowed-gaming-oui.txt
                         /usr/local/pf/conf/allowed-gaming-oui.txt.example
+%config(noreplace)      /usr/local/pf/conf/apache_filters.conf
+                        /usr/local/pf/conf/apache_filters.conf.example
 %config(noreplace)      /usr/local/pf/conf/authentication.conf
                         /usr/local/pf/conf/authentication.conf.example
 %config                 /usr/local/pf/conf/chi.conf
