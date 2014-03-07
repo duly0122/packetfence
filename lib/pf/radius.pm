@@ -138,7 +138,7 @@ sub authorize {
     my $vlan_obj = new pf::vlan::custom();
     # should we auto-register? let's ask the VLAN object
     if ($vlan_obj->shouldAutoRegister($mac, $switch->isRegistrationMode(), 0, $isPhone,
-        $connection_type, $user_name, $ssid, $eap_type)) {
+        $connection_type, $user_name, $ssid, $eap_type, $switch, $port)) {
 
         # automatic registration
         my %autoreg_node_defaults = $vlan_obj->getNodeInfoForAutoReg($switch->{_id}, $port,
@@ -148,7 +148,7 @@ sub authorize {
         if (!node_register($mac, $autoreg_node_defaults{'pid'}, %autoreg_node_defaults)) {
             $logger->error("auto-registration of node $mac failed");
         }
-        locationlog_synchronize($switch_ip, $port, undef, $mac,
+        locationlog_synchronize($switch, $switch_ip, $switch_mac, $port, undef, $mac,
             $isPhone ? $VOIP : $NO_VOIP, $connection_type, $user_name, $ssid
         );
     }
